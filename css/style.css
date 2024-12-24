@@ -1,0 +1,716 @@
+:root {
+    /* Couleurs claires */
+    --background-light: #f0f2f5;
+    --surface-light: #ffffff;
+    --primary-light: #007bff;
+    --secondary-light: #6c757d;
+    --text-primary-light: #212529;
+    --text-secondary-light: #6c757d;
+    --border-light: #dee2e6;
+    --hover-light: #e9ecef;
+    
+    /* Couleurs sombres */
+    --background-dark: #343a40;
+    --surface-dark: #495057;
+    --primary-dark: #17a2b8;
+    --secondary-dark: #6c757d;
+    --text-primary-dark: #f8f9fa;
+    --text-secondary-dark: #ced4da;
+    --border-dark: #495057;
+    --hover-dark: #6c757d;
+
+    /* Variables pour les priorités */
+    --priority-high: #dc3545;
+    --priority-medium: #ffc107;
+    --priority-low: #28a745;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+body {
+    background-image: url('../img/jungle.jpg');
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    display: flex;
+    color: var(--text-primary-light);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    max-width: 1400px;
+    margin: 20px auto;
+    background: var(--surface-light);
+    border-radius: 16px;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 300px;
+    background: var(--surface-light);
+    padding: 24px;
+    border-right: 1px solid var(--border-light);
+    transition: background-color 0.3s ease;
+}
+
+.sidebar h3 {
+    font-size: 1.1rem;
+    color: var(--text-secondary-light);
+    margin-bottom: 16px;
+    font-weight: 600;
+}
+
+/* Main Content Styles */
+.main-content {
+    flex: 1;
+    padding: 24px;
+    background: var(--surface-light);
+    transition: background-color 0.3s ease;
+}
+
+/* Search Box Styles */
+.search-box {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    font-size: 14px;
+    margin-bottom: 24px;
+    background: var(--background-light);
+    transition: all 0.3s ease;
+}
+
+.search-box:focus {
+    outline: none;
+    border-color: var(--primary-light);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+/* Filter Button Styles */
+.filter-btn {
+    display: block;
+    width: 100%;
+    padding: 12px 16px;
+    margin: 4px 0;
+    text-align: left;
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    color: var(--text-primary-light);
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+    background: var(--hover-light);
+}
+
+.filter-btn.active {
+    background: var(--primary-light);
+    color: white;
+}
+
+/* Add Task Section */
+.add-task {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.add-task input,
+.add-task select {
+    padding: 12px 16px;
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    font-size: 14px;
+    background: var(--background-light);
+    color: var(--text-primary-light);
+    transition: all 0.3s ease;
+}
+
+.add-task input:focus,
+.add-task select:focus {
+    outline: none;
+    border-color: var(--primary-light);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+#taskInput {
+    flex: 2;
+    min-width: 200px;
+}
+
+#taskCategory,
+#taskPriority,
+#taskDueDate {
+    flex: 1;
+    min-width: 150px;
+}
+
+/* Task List Styles */
+.task-list {
+    list-style: none;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    margin: 8px 0;
+    background: var(--background-light);
+    border-radius: 12px;
+    border: 1px solid var(--border-light);
+    transition: all 0.3s ease;
+}
+
+.task-item:hover {
+    transform: translateX(4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Task Content Styles */
+.task-content {
+    flex: 1;
+    margin: 0 16px;
+}
+
+.task-text {
+    font-size: 15px;
+    margin-bottom: 4px;
+    color: var(--text-primary-light);
+}
+
+.task-text.completed {
+    text-decoration: line-through;
+    color: var(--text-secondary-light);
+}
+
+.task-category {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    background: var(--secondary-light);
+    color: white;
+    margin-right: 8px;
+}
+
+.task-date {
+    font-size: 12px;
+    color: var(--text-secondary-light);
+}
+
+.task-date.overdue {
+    color: var(--priority-high);
+}
+
+/* Priority Styles */
+.priority-high {
+    border-left: 4px solid var(--priority-high);
+}
+
+.priority-medium {
+    border-left: 4px solid var(--priority-medium);
+}
+
+.priority-low {
+    border-left: 4px solid var(--priority-low);
+}
+
+/* Task Actions */
+.task-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.task-actions button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.edit-btn {
+    background: var(--secondary-light);
+    color: white;
+}
+
+.edit-btn:hover {
+    background: var(--secondary-dark);
+}
+
+.delete-btn {
+    background: var(--priority-high);
+    color: white;
+}
+
+.delete-btn:hover {
+    background: #c82333;
+}
+
+/* Checkbox Style */
+.task-checkbox {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    accent-color: var(--primary-light);
+}
+
+/* Stats Container */
+.stats-container {
+    background: var(--background-light);
+    border-radius: 12px;
+    padding: 16px;
+    margin-top: 24px;
+}
+
+.stats-container p {
+    font-size: 14px;
+    margin: 8px 0;
+    color: var(--text-secondary-light);
+}
+
+/* Pomodoro Timer */
+.pomodoro-container {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: var(--surface-light);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.timer {
+    font-size: 2.5em;
+    font-weight: 600;
+    text-align: center;
+    margin: 16px 0;
+    color: var(--primary-light);
+}
+
+/* Dark Mode Styles */
+.dark-mode {
+    background-color: var(--background-dark);
+    color: var(--text-primary-dark);
+}
+
+.dark-mode .container,
+.dark-mode .sidebar,
+.dark-mode .main-content {
+    background: var(--surface-dark);
+}
+
+.dark-mode .task-item,
+.dark-mode .search-box,
+.dark-mode .add-task input,
+.dark-mode .add-task select,
+.dark-mode .stats-container {
+    background: var(--background-dark);
+    border-color: var(--border-dark);
+    color: var(--text-primary-dark);
+}
+
+.dark-mode .filter-btn {
+    color: var(--text-primary-dark);
+}
+
+.dark-mode .filter-btn:hover {
+    background: var(--hover-dark);
+}
+
+.dark-mode .task-text {
+    color: var(--text-primary-dark);
+}
+
+.dark-mode .pomodoro-container {
+    background: var(--surface-dark);
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+    .container {
+        margin: 0;
+        border-radius: 0;
+    }
+
+    .add-task {
+        flex-direction: column;
+    }
+
+    .add-task input,
+    .add-task select,
+    .add-task button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--border-light);
+    }
+
+    .task-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .task-actions {
+        margin-top: 12px;
+        width: 100%;
+    }
+
+    .task-actions button {
+        flex: 1;
+    }
+}
+
+/* Animations */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.task-item {
+    animation: slideIn 0.3s ease forwards;
+}
+
+/* Input Focus Styles */
+input:focus, select:focus, button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+}
+
+/* Loading States */
+.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 40px;
+    color: var(--text-secondary-light);
+}
+
+.empty-state p {
+    margin: 16px 0;
+    font-size: 16px;
+}
+
+/* Style général pour tous les boutons */
+.settings-panel {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+/* Bouton du menu burger */
+#menuToggle {
+    all: unset;
+    font-size: 24px;
+    cursor: pointer;
+    background-color: var(--background-light);
+    padding: 10px;
+    border-radius: 100px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+#menuToggle:hover {
+    background-color: var(--hover-light);
+    transform: rotate(90deg); /* Animation subtile */
+}
+
+/* Conteneur des options */
+#menuOptions {
+    display: none; /* Masqué par défaut */
+    flex-direction: column;
+    gap: 12px;
+    background-color: var(--surface-light);
+    padding: 12px 16px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 60px; /* Sous le bouton menu */
+    right: 0;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+#menuOptions button {
+    all: unset;
+    padding: 10px 16px;
+    font-size: 16px;
+    font-family: 'Whitney', sans-serif;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.2s;
+}
+
+#menuOptions button:hover {
+    background-color: var(--hover-light);
+}
+
+/* Animation de fade-in */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Styles pour les boutons */
+button {
+    all: unset;
+    display: inline-block;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-family: 'Whitney', sans-serif; /* Police moderne */
+    text-align: center;
+    cursor: pointer;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    background: var(--primary-light);
+    color: white;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Bouton Mode Sombre */
+#darkModeToggle {
+    background-color: #6c757d; /* Gris */
+    color: #ffffff;
+}
+
+#darkModeToggle:hover {
+    background-color: #5a6268;
+}
+
+#darkModeToggle:active {
+    background-color: #495057;
+}
+
+/* Bouton Exporter */
+#exportTasks {
+    background-color: #007bff; /* Bleu */
+    color: #ffffff;
+}
+
+#exportTasks:hover {
+    background-color: #0056b3;
+}
+
+#exportTasks:active {
+    background-color: #004085;
+}
+
+/* Bouton Pomodoro */
+#startPomodoro {
+    background-color: #dc3545; /* Rouge */
+    color: #ffffff;
+}
+
+#startPomodoro:hover {
+    background-color: #c82333;
+}
+
+#startPomodoro:active {
+    background-color: #bd2130;
+}
+
+/* Boutons du Timer Pomodoro */
+#startTimer, #resetTimer {
+    background-color: #ffc107; /* Jaune */
+    color: #ffffff;
+}
+
+#startTimer:hover, #resetTimer:hover {
+    background-color: #e0a800;
+}
+
+#startTimer:active, #resetTimer:active {
+    background-color: #d39e00;
+}
+
+.dark-mode #menuToggle {
+    background-color: var(--surface-dark);
+    color: var(--text-primary-dark);
+}
+
+.dark-mode #menuOptions {
+    background-color: var(--surface-dark);
+}
+
+.dark-mode #menuOptions button {
+    background-color: var(--surface-dark);
+    color: var(--text-primary-dark);
+}
+
+.dark-mode #menuOptions button:hover {
+    background-color: var(--hover-dark);
+}
+
+/* Styles pour le pop-up Pomodoro */
+.pomodoro-popup {
+    display: none; /* Masqué par défaut */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    z-index: 1000;
+  }
+  
+  .pomodoro-popup.active {
+    display: block; /* Affiché lorsque la classe active est ajoutée */
+  }
+  
+  .pomodoro-popup .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+/* Style pour le bouton Pomodoro */
+#pomodoroPopupToggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: white; /* Rouge */
+    border: none;
+    color: white;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  #pomodoroPopupToggle img {
+    width: 24px;
+    height: 24px;
+  }
+  
+  #pomodoroPopupToggle:hover {
+    background-color: #e53935; /* Rouge plus foncé */
+    transform: scale(1.1);
+  }
+  
+  #pomodoroPopupToggle:active {
+    background-color: #d32f2f; /* Rouge encore plus foncé */
+    transform: scale(0.9);
+  }
+
+@media (max-width: 576px) {
+    .sidebar {
+        display: none;
+    }
+
+    .main-content {
+        padding: 16px;
+    }
+
+    .task-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .task-actions {
+        margin-top: 12px;
+        width: 100%;
+    }
+
+    .task-actions button {
+        flex: 1;
+    }
+
+    .pomodoro-container {
+        bottom: 16px;
+        right: 16px;
+        padding: 16px;
+    }
+
+    .settings-panel {
+        top: 10px;
+        right: 10px;
+    }
+
+    #menuToggle {
+        padding: 8px;
+        font-size: 20px;
+    }
+
+    #menuOptions {
+        top: 50px;
+        padding: 10px 14px;
+    }
+
+    #menuOptions button {
+        padding: 8px 14px;
+        font-size: 14px;
+    }
+
+    .add-task {
+        flex-direction: column;
+    }
+
+    .add-task input,
+    .add-task select,
+    .add-task button {
+        width: 100%;
+    }
+}

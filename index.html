@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo List Pro</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <input type="text" class="search-box" placeholder="Rechercher des tâches...">
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">Toutes les tâches</button>
+                <button class="filter-btn" data-filter="active">En cours</button>
+                <button class="filter-btn" data-filter="completed">Terminées</button>
+            </div>
+            <div class="categories-list">
+                <h3>Catégories</h3>
+                <!-- Les catégories seront ajoutées dynamiquement -->
+            </div>
+            <div class="stats-container">
+                <h3>Statistiques</h3>
+                <div id="taskStats"></div>
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="add-task">
+                <input type="text" id="taskInput" placeholder="Ajouter une nouvelle tâche...">
+                <select id="taskPriority">
+                    <option value="low">Basse</option>
+                    <option value="medium">Moyenne</option>
+                    <option value="high">Haute</option>
+                </select>
+                <input type="text" id="taskCategory" placeholder="Catégorie">
+                <input type="date" id="taskDueDate">
+                <button id="addButton">Ajouter</button>
+            </div>
+            <ul class="task-list" id="taskList"></ul>
+        </div>
+    </div>
+    
+    <div class="settings-panel">
+        <button id="menuToggle" aria-label="Ouvrir le menu">
+          ☰
+        </button>
+        <div id="menuOptions">
+          <button id="darkModeToggle">Mode Sombre</button>
+          <button id="exportTasks">Exporter</button>
+        </div>
+    </div>
+      
+   
+
+    <div class="pomodoro-popup">
+        <button class="close-btn" aria-label="Fermer">✖</button>
+        <h3>Pomodoro Timer</h3>
+        <div class="timer">25:00</div>
+        <button id="startTimer">Démarrer</button>
+        <button id="resetTimer">Réinitialiser</button>
+    </div>
+
+    <button id="pomodoroPopupToggle" aria-label="Pomodoro Timer">
+        <img src="img/time-and-date.png" alt="">
+    </button>
+
+    <script src="app.js"></script>
+</body>
+</html>
