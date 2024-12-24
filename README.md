@@ -70,4 +70,3 @@ Ce projet est sous licence MIT. Voir le fichier LICENSE pour plus de détails.
 
 Guillaume Le Saux - [LinkedIn](https://www.linkedin.com/in/guillaume-le-saux-27556b24b/) - [Email](mailto:votremail@example.com)
 
-Lien du projet : [https://github.com/votre-utilisateur/portfolio](https://github.com/votre-utilisateur/portfolio)
